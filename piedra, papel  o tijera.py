@@ -39,7 +39,7 @@ def solo():
 def pareja():
     condicion = ""
     nombre1 = input("porfavor escriba su nombre: ")
-    jugador1 = getpass.getpass(f"{nombre1} elije entre piedra - papel - tijera ").lower()
+    jugador1 = getpass.getpass(f"{nombre1} elije entre piedra - papel - tijera y presione enter").lower()
     
     if jugador1 == "piedra" or jugador1 == "papel" or jugador1 == "tijera":
         condicion = False
@@ -52,7 +52,7 @@ def pareja():
             condicion = False
     
     nombre2 = input("porfavor escriba su nombre: ")
-    jugador2 = getpass.getpass(f"{nombre2} elije entre piedra - papel - tijera ")
+    jugador2 = getpass.getpass(f"{nombre2} elije entre piedra - papel - tijera y presione enter ").lower()
     
     if jugador2 == "piedra" or jugador2 == "papel" or jugador2 == "tijera":
         condicion = False
