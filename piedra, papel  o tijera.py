@@ -1,17 +1,7 @@
 import random
 import getpass
 
-validar = ""
-
-def juegosolo(opcion1,maquina):
-    if((opcion1 == "piedra" and maquina == "tijera" or
-        opcion1 == "tijera" and maquina == "papel" or
-        opcion1 == "papel" and maquina == "piedra")):
-        return True
-    else:
-        return False
-
-def juegopareja(usuario1,usuario2):
+def juego(usuario1,usuario2):
     if((usuario1 == "piedra" and usuario2 == "tijera" or
         usuario1 == "tijera" and usuario2 == "papel" or
         usuario1 == "papel" and usuario2 == "piedra")):
@@ -23,25 +13,25 @@ def solo():
 
     condiciones = ""
     print("elija una opcion entre piedra - papel - tijera")
-    opcion1 = input("con cual opcion quieres jugar: ").lower()
+    usuario1 = input("con cual opcion quieres jugar: ").lower()
 
-    if opcion1 == "piedra" or opcion1 == "papel" or opcion1 == "tijera":
+    if usuario1 == "piedra" or usuario1 == "papel" or usuario1 == "tijera":
         condiciones = False
-    elif opcion1 != "piedra" or opcion1 != "papel" or opcion1 != "tijera":
+    elif usuario1 != "piedra" or usuario1 != "papel" or usuario1 != "tijera":
         condiciones = True
         
     while condiciones:
         print("elija solo una de las tres opcion entre piedra - papel - tijera")
-        opcion1 = input("con cual opcion quieres jugar: ").lower()
-        if opcion1 == "piedra" or opcion1 == "papel" or opcion1 == "tijera":
+        usuario1 = input("con cual opcion quieres jugar: ").lower()
+        if usuario1 == "piedra" or usuario1 == "papel" or usuario1 == "tijera":
             condiciones = False
             
-    maquina = random.choice(["piedra","papel","tijera"])
-    print(f"la maquina jugo con: {maquina}")
+    usuario2 = random.choice(["piedra","papel","tijera"])
+    print(f"la maquina jugo con: {usuario2}")
 
-    if opcion1 == maquina:
+    if usuario1 == usuario2:
         return("!fue un empate!")
-    if juegosolo(opcion1,maquina):
+    if juego(usuario1,usuario2):
         return "!felicidades haz ganado la partida!"
     else:
         return "!es una pena, perdiste!"
@@ -76,27 +66,40 @@ def pareja():
     
     if jugador1 == jugador2:
         return("!fue un empate!")
-    if juegopareja(jugador1,jugador2):
-        return f"!felicidades haz ganado la partida {nombre1} !"
+    if juego(jugador1,jugador2):
+        return f"!felicidades haz ganado la partida {nombre1} con {jugador1} !"
     else:
-        return f"!felicidades haz ganado la partida {nombre2} !"
+        return f"!felicidades haz ganado la partida {nombre2} con {jugador2} !"
 
 print("-- Bienvendido como te gustaria jugar --")
-n = input("Indique lo que le gustaria hacer:").lower()
 
-if n == "solo" or n == "pareja" or n == "salir":
-    validar == False
-elif n != "solo" or n != "pareja" or n != "salir":
-    validar == True
+print(". Solo")
+
+print(". Pareja")
+
+print(". Salir")
+
+opcion = input("Indique lo que le gustaria hacer:").lower()
+
+validar = ""
+
+if opcion == "solo" or opcion == "pareja" or opcion == "salir":
+    validar = False
+elif opcion != "solo" or opcion != "pareja" or opcion != "salir":
+    validar = True
+    
 while validar:
     print("Debes elegir entre las tres opciones")
-    n=input(print("por favor indique cual de las tres opciones quiere hacer: ")).lower()
-    if n == "solo" or n == "pareja" or n == "salir":
-        validar == False
+    print(". Solo")
+    print(". Pareja")
+    print(". Salir")
+    opcion=input("por favor indique cual de las tres opciones quiere hacer: ").lower()
+    if opcion == "solo" or opcion == "pareja" or opcion == "salir":
+        validar = False
 
-if n == "solo":
+if opcion == "solo":
     print(solo())
-elif n == "pareja":
+elif opcion == "pareja":
     print(pareja())
-elif n == "salir":
+elif opcion == "salir":
     print("-- MUCHAS GRACIAS POR PARTICIPAR --")
